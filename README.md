@@ -1,6 +1,6 @@
 # Java-Projects
 My works, only for display.  
-Discord Tag: Akutasan#2256
+Discord Tag: Akutasan#2256  
 All my projects and their descriptions are displayed below:
 
 ### BungeeSystem
