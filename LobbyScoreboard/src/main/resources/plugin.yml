@@ -1,0 +1,9 @@
+name: ScoreboardPlugin
+main: com.akutasan.scoreboard.Main
+version: 1.0-SNAPSHOT
+author: Akutasan
+
+commands:
+  setsc:
+    description: Sets your Scoreboard
+    usage: /setsc

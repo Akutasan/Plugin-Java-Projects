@@ -1,0 +1,7 @@
+name: FriendsGUI
+version: 1.0-SNAPSHOT
+main: com.akutasan.friendsgui.FriendsGUI
+author: Akutasan
+
+commands:
+  friendsgui:

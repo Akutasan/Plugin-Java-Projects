@@ -1,0 +1,7 @@
+name: Friends
+version: 1.0-SNAPSHOT
+main: com.akutasan.friends.Friends
+author: Akutasan
+
+commands:
+  friend:
