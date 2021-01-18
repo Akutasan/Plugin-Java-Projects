@@ -13,13 +13,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class TeamListComm extends Command{
-
-    static List<Data> teamL = new ArrayList<>();
-    public static String g;
-    public static int gID;
-
-
-
+    
     public TeamListComm() {
         super("teamon","synodix.team","teamlist");
     }
@@ -37,7 +31,6 @@ public class TeamListComm extends Command{
             }
         }
 
-        //Sort
         Collections.sort(teamlist);
 
         for (Data pl : teamlist) {

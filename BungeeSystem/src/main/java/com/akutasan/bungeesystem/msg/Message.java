@@ -55,8 +55,6 @@ public class Message extends Command {
                         mes.append(ChatColor.YELLOW).append(args[i]).append(" ");
                     }
 
-//                    String tusv = player.getServer().getInfo().getName();
-//                    String susv = player2.getServer().getInfo().getName();
                     String senderFormat = "§8[§d§lMSG§8] §7Du §8➛ "+getRankCol(player2)+player2.getName()+" §8» "+ ChatColor.YELLOW+mes.toString();
                     String receiverFormat = "§8[§d§lMSG§8] "+getRankCol(player)+player.getName()+" §8➛ §7Dir §8» "+ChatColor.YELLOW+mes.toString();
                     player.sendMessage(new TextComponent(senderFormat));
@@ -128,37 +126,3 @@ public class Message extends Command {
         }
     }
 }
-
-//
-//                if (player.hasPermission("Score.Owner")) {
-//                return "§4";
-//                } else if (player.hasPermission("Score.Admin")) {
-//                return "§c";
-//                } else if (player.hasPermission("Score.SrDeveloper")) {
-//                return "§c";
-//                } else if (player.hasPermission("Score.Developer")) {
-//                return "§b";
-//                } else if (player.hasPermission("Score.SrModerator")) {
-//                return "§c";
-//                } else if (player.hasPermission("Score.Moderator")) {
-//                return "§9";
-//                } else if (player.hasPermission("Score.SrBuilder")) {
-//                return "§c";
-//                } else if (player.hasPermission("Score.Supporter")) {
-//                return "§3";
-//                } else if (player.hasPermission("Score.Builder")) {
-//                return "§e";
-//                }  else if (player.hasPermission("Score.YouTuber")) {
-//                return "§5";
-//                } else if (player.hasPermission("Score.MVP")) {
-//                return "§d";
-//                } else if (player.hasPermission("Score.VIP")) {
-//                return "§a";
-//                } else if (player.hasPermission("Score.Premium")) {
-//                return "§6";
-//                } else if (player.hasPermission("Score.Spieler")){
-//                return "§7";
-//                } else {
-//                return "§7";
-//                }
-//&8[&d&lMSG&8] &7Du &8➛ &2Name

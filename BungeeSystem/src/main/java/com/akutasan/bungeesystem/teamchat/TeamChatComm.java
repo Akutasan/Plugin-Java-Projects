@@ -9,7 +9,6 @@ import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Command;
 
-//import org.bukkit.entity.Player;
 
 
 public class TeamChatComm extends Command {
@@ -65,29 +64,4 @@ public class TeamChatComm extends Command {
                 return "§7Tester §r§7• §7";
         }
     }
-
-
-//    private static String getRank(ProxiedPlayer player) {
-//        if (player.hasPermission("Score.Owner")) {
-//            return "§4Owner §r§7• §4";
-//        } else if (player.hasPermission("Score.Admin")) {
-//            return "§cAdmin §r§7• §c";
-//        } else if (player.hasPermission("Score.SrDeveloper")) {
-//            return "§cSrDev §r§7• §c";
-//        } else if (player.hasPermission("Score.Developer")) {
-//            return "§bDeveloper §r§7• §b";
-//        } else if (player.hasPermission("Score.SrModerator")) {
-//            return "§cSrMod §r§7• §c";
-//        } else if (player.hasPermission("Score.SrBuilder")) {
-//            return "§cSrBuilder §r§7• §c";
-//        } else if (player.hasPermission("Score.Moderator")) {
-//            return "§9Moderator §r§7• §9";
-//        } else if (player.hasPermission("Score.Supporter")) {
-//            return "§3Supporter §r§7• §3";
-//        } else if (player.hasPermission("Score.Builder")) {
-//            return "§eBuilder §r§7• §e";
-//        } else {
-//            return "§7Tester §r§7• §7";
-//        }
-//    }
 }

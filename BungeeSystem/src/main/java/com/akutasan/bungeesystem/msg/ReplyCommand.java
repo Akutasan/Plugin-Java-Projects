@@ -49,13 +49,6 @@ public class ReplyCommand extends Command {
                                     mes.append(ChatColor.YELLOW).append(arg).append(" ");
                                 }
 
-                                String tusv = player.getServer().getInfo().getName();
-                                String susv = player2.getServer().getInfo().getName();
-                                //&8[&d&lMSG&8] &7Du &8➛ &2Name
-                                //&8[&d&lMSG&8] &2Spieler &8➛ &7Du
-                                //mes.toString() == message
-                                //player.getName() == sender Name
-                                //player2.getName() == receiver name
                                 String senderFormat = "§8[§d§lMSG§8] §7Du §8➛ "+getRankCol(player2)+player2.getName()+" §8» "+ChatColor.YELLOW+mes.toString();
                                 String receiverFormat = "§8[§d§lMSG§8] "+getRankCol(player)+player.getName()+" §8➛ §7Dir §8» "+ChatColor.YELLOW+mes.toString();
                                 player.sendMessage(new TextComponent(senderFormat));
