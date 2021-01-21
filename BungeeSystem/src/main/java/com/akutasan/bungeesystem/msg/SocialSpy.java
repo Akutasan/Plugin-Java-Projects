@@ -12,7 +12,7 @@ import net.md_5.bungee.api.plugin.Command;
 
 public class SocialSpy extends Command {
     public static HashMap<ProxiedPlayer, ProxiedPlayer> replyhash = new HashMap();
-    public static List<ProxiedPlayer> sp = new ArrayList();
+    public static ArrayList sp = new ArrayList();
 
     public SocialSpy() {
         super("spy", "Sys.Spy", "socialspy");

@@ -47,13 +47,13 @@ public class TeamChatComm extends Command {
             case "Admin":
                 return "§cAdmin §r§7• §c";
             case "SrDeveloper":
-                return "§cSrDev §r§7• §c";
+                return "§bSrDev §r§7• §c";
             case "Developer":
                 return "§bDeveloper §r§7• §b";
             case "SrModerator":
-                return "§cSrMod §r§7• §c";
+                return "§9SrMod §r§7• §c";
             case "SrBuilder":
-                return "§cSrBuilder §r§7• §c";
+                return "§eSrBuilder §r§7• §c";
             case "Moderator":
                 return "§9Moderator §r§7• §9";
             case "Supporter":

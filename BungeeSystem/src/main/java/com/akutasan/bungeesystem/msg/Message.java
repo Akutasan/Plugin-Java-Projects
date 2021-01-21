@@ -101,10 +101,13 @@ public class Message extends Command {
             case "Owner":
                 return "§4";
             case "Admin":
-            case "SrDeveloper":
-            case "SrModerator":
-            case "SrBuilder":
                 return "§c";
+            case "SrDeveloper":
+                return "§b";
+            case "SrModerator":
+                return "§9";
+            case "SrBuilder":
+                return "§e";
             case "Developer":
                 return "§b";
             case "Moderator":
