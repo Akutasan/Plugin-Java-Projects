@@ -1,0 +1,13 @@
+main: com.akutasan.Main
+name: SkinRoleComp
+version: 1.1
+author: Akutasan
+authors:
+  - Timm
+commands:
+  skincomp:
+    description: Start a skin competition!
+    usage: /skincomp start
+  roleplay:
+    description: Start a roleplay!
+    usage: /roleplay start
