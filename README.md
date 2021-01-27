@@ -35,6 +35,11 @@ This plugin is 100% done, altough it needs some refining.
 ### Team SkyBlock
 This is a very sipmle Spigot plugin for randomizing ores created from Cobblestone generators.
 I included this since I really like the simplcity of this plugin.
+This plugin is 100% done.
+
+### Gold pickup
+This is a very sipmle Spigot plugin for randomizing Gold ingot spawn in a specified area.
+A similar concept to this already exists on the Hypixel Network's Pit.
 THis plugin is 100% done.
 
 ## End note
