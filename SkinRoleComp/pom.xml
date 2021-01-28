@@ -26,6 +26,10 @@
             <id>spigot-repo</id>
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
+        <repository>
+            <id>rayzr-repo</id>
+            <url>https://rayzr.dev/repo/</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -41,6 +45,11 @@
             <artifactId>annotations</artifactId>
             <version>19.0.0</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>me.rayzr522</groupId>
+            <artifactId>jsonmessage</artifactId>
+            <version>1.2.1</version>
         </dependency>
     </dependencies>
 </project>

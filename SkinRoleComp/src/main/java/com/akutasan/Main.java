@@ -1,58 +1,43 @@
 package com.akutasan;
 
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
+import com.akutasan.manager.CMD_eventtp;
+import com.akutasan.manager.CMD_roleplay;
+import com.akutasan.manager.CMD_skincomp;
+import com.akutasan.manager.FileManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.Date;
+import java.util.Objects;
 
 public class Main extends JavaPlugin {
-    File config = new File("plugins/SkinRoleComp", "config.yml");
+    private FileManager fileManager;
+    private static Main instance;
 
-    FileConfiguration cfg;
 
-    private static int cooldownTime;
+
 
     public void onEnable() {
-        if (!getDataFolder().exists())
-            getDataFolder().mkdir();
-        if (!this.config.exists()) {
-            try {
-                this.config.createNewFile();
-                this.cfg = YamlConfiguration.loadConfiguration(this.config);
-                this.cfg.set("#This is for Skin Competition!", null);
-                this.cfg.set("cooldown:", 3600);
-                this.cfg.set("cooldown_msg:", "&cYou have to wait &e%time% &cbefore executing that command again!");
-                this.cfg.set("message:", "&e%player% &ahas &astarded &aa &askin &acomp! %component%");
-                this.cfg.set("component:", "&7(&eteleport&7)");
-                this.cfg.set("event.hover:", "/tp %player%");
-                this.cfg.set(" ",null);
-                this.cfg.set("#This is for Rollplay!", null);
-                this.cfg.set("cooldownR:", 3600);
-                this.cfg.set("cooldown_msgR:", "&cYou have to wait &e%time% &cbefore executing that command again!");
-                this.cfg.set("messageR:", "&e%player% &ahas &astarded &aa &askin &acomp! %component%");
-                this.cfg.set("componentR:", "&7(&eteleport&7)");
-                this.cfg.set("event.hoverR:", "/tp %player%");
-                this.cfg.save(this.config);
-                cooldownTime = this.cfg.getInt("cooldown:");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } else {
-            this.cfg = YamlConfiguration.loadConfiguration(this.config);
-            cooldownTime = this.cfg.getInt("cooldown:");
-        }
-
-    }
-
-    public int getCooldownTime() {
-        return cooldownTime;
+        instance = this;
+        this.fileManager = new FileManager();
+        this.fileManager.init();
+        Objects.requireNonNull(getCommand("roleplay")).setExecutor(new CMD_roleplay());
+        Objects.requireNonNull(getCommand("skincomp")).setExecutor(new CMD_skincomp());
+        Objects.requireNonNull(getCommand("eventtp")).setExecutor(new CMD_eventtp());
+        getLogger().info("SkinRoleComp successfully enabled!");
     }
 
 
-    private Long secondsBetween(Date first, Date second) {
-        return (first.getTime() - second.getTime()) / 1000L;
+
+    @Override
+    public void onDisable() {
+        getLogger().info("SkinRoleComp successfully disabled!");
     }
+
+    public static Main getInstance() {
+        return instance;
+    }
+
+    public FileManager getFileManager() {
+        return this.fileManager;
+    }
+
 }
