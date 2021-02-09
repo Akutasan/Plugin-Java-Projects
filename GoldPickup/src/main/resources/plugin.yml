@@ -1,6 +1,6 @@
 name: GoldPickup
-version: 1.0-SNAPSHOT
+version: 1.1
 author: Akutasan
-main: com.akutasan.Main
+main: com.akutasan.GoldPickup
 
 description: For the randomized Goldpickup

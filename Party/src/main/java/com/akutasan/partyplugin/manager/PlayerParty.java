@@ -1,12 +1,10 @@
 package com.akutasan.partyplugin.manager;
 
-import com.akutasan.partyplugin.Main;
+import com.akutasan.partyplugin.Party;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import de.dytanic.cloudnet.driver.CloudNetDriver;
-import de.dytanic.cloudnet.driver.permission.IPermissionUser;
 import net.md_5.bungee.BungeeCord;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
@@ -93,24 +91,24 @@ public class PlayerParty
     public void invite(final ProxiedPlayer p)
     {
         this.invitations.add(p);
-        p.sendMessage(new TextComponent(Main.partyprefix + "§a" + getLeader().getName() + " §ahat §edich in §aseine §aParty §aeingeladen!"));
-        TextComponent accept = new TextComponent(Main.partyprefix + "§7Klicke §e§lhier §7um §a§lanzunehmen!");
+        p.sendMessage(new TextComponent(Party.partyprefix + "§a" + getLeader().getName() + " §ahas invited §eyou §ainto §ahis §aParty!"));
+        TextComponent accept = new TextComponent(Party.partyprefix + "§7Click §e§lhere §7to §a§laccept!");
         accept.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/party accept " + getLeader().getName()));
         accept.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§a/party accept §6" + getLeader().getName()).create()));
-        TextComponent deny = new TextComponent(Main.partyprefix + "§7Klicke §e§lhier §7um §c§labzulehnen!");
+        TextComponent deny = new TextComponent(Party.partyprefix + "§7Click §e§lhere §7to §c§ldecline!");
         deny.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/party deny " + getLeader().getName()));
         deny.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§c/party deny §6"+getLeader().getName()).create()));
         p.sendMessage(accept);
         p.sendMessage(deny);
-        BungeeCord.getInstance().getScheduler().schedule(Main.getInstance(), new Runnable()
+        BungeeCord.getInstance().getScheduler().schedule(Party.getInstance(), new Runnable()
         {
             public void run()
             {
                 if (PlayerParty.this.hasRequest(p))
                 {
                     PlayerParty.this.invitations.remove(p);
-                    p.sendMessage(new TextComponent(Main.partyprefix + "§cDeine Einladung §cist §cabgelaufen"));
-                    PlayerParty.this.getLeader().sendMessage(new TextComponent(Main.partyprefix + "§cDie Einladung zu §e" + p.getName() + " §cist abgelaufen"));
+                    p.sendMessage(new TextComponent(Party.partyprefix + "§cYour invitation §cis §cexpired!"));
+                    PlayerParty.this.getLeader().sendMessage(new TextComponent(Party.partyprefix + "§cThe invitation to §e" + p.getName() + " §chas expired!"));
                 }
                 PlayerParty.this.start(p);
             }
@@ -119,7 +117,7 @@ public class PlayerParty
 
     private void start(final ProxiedPlayer p)
     {
-        BungeeCord.getInstance().getScheduler().schedule(Main.getInstance(), new Runnable()
+        BungeeCord.getInstance().getScheduler().schedule(Party.getInstance(), new Runnable()
         {
             public void run()
             {
@@ -127,46 +125,45 @@ public class PlayerParty
                 if ((party != null) && (party.getPlayers().size() == 0))
                 {
                     PartyManager.deleteParty(p);
-                    party.getLeader().sendMessage(new TextComponent(Main.partyprefix + "§cDie Party §cwird wegen zu §cwenig §cMitgliedern §caufgelöst"));
-                    p.sendMessage(new TextComponent(Main.partyprefix + "§cDie Party §cwurde §caufgelöst"));
+                    party.getLeader().sendMessage(new TextComponent(Party.partyprefix + "§cThe Party §cis dissolved because of too §cfew §cmembers!"));
+                    p.sendMessage(new TextComponent(Party.partyprefix + "§cThe Party §cwas §cdissolved"));
                 }
             }
         }, 2L, TimeUnit.MINUTES);
     }
 
     public static String getRankName(ProxiedPlayer player){
-        IPermissionUser user = CloudNetDriver.getInstance().getPermissionManagement().getUser(player.getUniqueId());
-        assert user != null;
-        return CloudNetDriver.getInstance().getPermissionManagement().getHighestPermissionGroup(user).getName();
+        return player.getDisplayName();
     }
 
     public static String getRankCol(ProxiedPlayer player) {
-        switch (getRankName(player)) {
-            case "Owner":
-                return "§4";
-            case "Admin":
-            case "SrDeveloper":
-            case "SrModerator":
-            case "SrBuilder":
-                return "§c";
-            case "Developer":
-                return "§b";
-            case "Moderator":
-                return "§9";
-            case "Supporter":
-                return "§3";
-            case "Builder":
-                return "§e";
-            case "Social":
-                return "§5";
-            case "MVP":
-                return "§d";
-            case "VIP":
-                return "§a";
-            case "Premium":
-                return "§6";
-            default:
-                return "§7";
-        }
+//        switch (getRankName(player)) {
+//            case "Owner":
+//                return "§4";
+//            case "Admin":
+//            case "SrDeveloper":
+//            case "SrModerator":
+//            case "SrBuilder":
+//                return "§c";
+//            case "Developer":
+//                return "§b";
+//            case "Moderator":
+//                return "§9";
+//            case "Supporter":
+//                return "§3";
+//            case "Builder":
+//                return "§e";
+//            case "Social":
+//                return "§5";
+//            case "MVP":
+//                return "§d";
+//            case "VIP":
+//                return "§a";
+//            case "Premium":
+//                return "§6";
+//            default:
+//                return "§7";
+//        }
+        return "§e";
     }
 }

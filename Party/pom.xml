@@ -40,46 +40,15 @@
         <dependency>
             <groupId>net.md-5</groupId>
             <artifactId>bungeecord-api</artifactId>
-            <version>1.16-R0.4-SNAPSHOT</version>
+            <version>1.16-R0.5-SNAPSHOT</version>
             <type>jar</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>net.md-5</groupId>
             <artifactId>bungeecord-api</artifactId>
-            <version>1.16-R0.4-SNAPSHOT</version>
+            <version>1.16-R0.5-SNAPSHOT</version>
             <type>javadoc</type>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>de.dytanic.cloudnet</groupId>
-            <artifactId>cloudnet</artifactId>
-            <version>3.3.0-RELEASE</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <!--  cloudnet driver for plugins and modules -->
-        <dependency>
-            <groupId>de.dytanic.cloudnet</groupId>
-            <artifactId>cloudnet-driver</artifactId>
-            <version>3.3.0-RELEASE</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <!--  cloudnet wrapper for plugins -->
-        <dependency>
-            <groupId>de.dytanic.cloudnet</groupId>
-            <artifactId>cloudnet-wrapper-jvm</artifactId>
-            <version>3.3.0-RELEASE</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <!--  cloudnet bridge module for plugins and modules -->
-        <dependency>
-            <groupId>de.dytanic.cloudnet</groupId>
-            <artifactId>cloudnet-bridge</artifactId>
-            <version>3.3.0-RELEASE</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

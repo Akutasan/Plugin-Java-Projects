@@ -1,9 +1,8 @@
 package com.akutasan.partyplugin.commands;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import com.akutasan.partyplugin.Main;
+import com.akutasan.partyplugin.Party;
 import com.akutasan.partyplugin.manager.PartyManager;
 import com.akutasan.partyplugin.manager.PlayerParty;
 import net.md_5.bungee.BungeeCord;
@@ -14,44 +13,44 @@ public class PartyKick extends SubCommand
 {
     public PartyKick()
     {
-        super("", "<Spieler>", "kick");
+        super("", "<Player>", "kick");
     }
 
     public void onCommand(ProxiedPlayer p, String[] args)
     {
         if (args.length == 0)
         {
-            p.sendMessage(new TextComponent(Main.partyprefix + "§cBitte gebe einen §cNamen an."));
+            p.sendMessage(new TextComponent(Party.partyprefix + "§cPlease enter a valid §cName!"));
             return;
         }
         if (PartyManager.getParty(p) == null)
         {
-            p.sendMessage(new TextComponent(Main.partyprefix + "§cDu bist in §ckeiner §cParty."));
+            p.sendMessage(new TextComponent(Party.partyprefix + "§cYou are not in §ca Party!"));
             return;
         }
         PlayerParty party = PartyManager.getParty(p);
         assert party != null;
         if (!party.isLeader(p))
         {
-            p.sendMessage(new TextComponent(Main.partyprefix + "§cDu bist nicht der §cParty §cBesitzer."));
+            p.sendMessage(new TextComponent(Party.partyprefix + "§cYou are not the §cParty §cleader."));
             return;
         }
         ProxiedPlayer pl = BungeeCord.getInstance().getPlayer(args[0]);
         if (pl == null)
         {
-            p.sendMessage(new TextComponent(Main.partyprefix + "§c" + args[0] + " §cist nicht §cOnline."));
+            p.sendMessage(new TextComponent(Party.partyprefix + "§c" + args[0] + " §cis not online!"));
             return;
         }
         if (!party.isInParty(pl))
         {
-            p.sendMessage(new TextComponent(Main.partyprefix + "§c" + args[0] + " §cist nicht §cin §cdeiner §cParty."));
+            p.sendMessage(new TextComponent(Party.partyprefix + "§c" + args[0] + " §cis not in your Party!"));
             return;
         }
         if (party.removePlayer(pl)) {
-            pl.sendMessage(new TextComponent(Main.partyprefix + "§cDu wurdest §cvon der §cParty §cgekickt!"));
-            p.sendMessage(new TextComponent(Main.partyprefix + "§6" + PlayerParty.getRankCol(p) + p.getName() + " §chat die Party verlassen."));
+            pl.sendMessage(new TextComponent(Party.partyprefix + "§cYou have been kicked §cfrom the Party!"));
+            p.sendMessage(new TextComponent(Party.partyprefix + "§6" + PlayerParty.getRankCol(p) + p.getName() + " §cleft the Party."));
             for (ProxiedPlayer pp : party.getPlayers()) {
-                pp.sendMessage(new TextComponent(Main.partyprefix + "§6" + PlayerParty.getRankCol(pl) + pl.getName() + " §cwurde aus der Party gekickt!"));
+                pp.sendMessage(new TextComponent(Party.partyprefix + "§6" + PlayerParty.getRankCol(pl) + pl.getName() + " §chas been kicked from your Party!"));
             }
             start(p);
         }
@@ -59,12 +58,12 @@ public class PartyKick extends SubCommand
 
     private void start(final ProxiedPlayer p)
     {
-        BungeeCord.getInstance().getScheduler().schedule(Main.getInstance(), () -> {
+        BungeeCord.getInstance().getScheduler().schedule(Party.getInstance(), () -> {
             PlayerParty party = PartyManager.getParty(p);
             if ((party != null) && (party.getPlayers().size() == 0))
             {
                 PartyManager.deleteParty(p);
-                p.sendMessage(new TextComponent(Main.partyprefix + "§cDie Party wird wegen zu wenig §cMitgliedern §caufgelöst."));
+                p.sendMessage(new TextComponent(Party.partyprefix + "§cThe party is dissolved because §cof too few members."));
             }
         }, 2L, TimeUnit.MINUTES);
     }

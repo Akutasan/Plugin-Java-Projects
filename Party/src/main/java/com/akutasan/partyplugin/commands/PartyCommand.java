@@ -1,6 +1,6 @@
 package com.akutasan.partyplugin.commands;
 
-import com.akutasan.partyplugin.Main;
+import com.akutasan.partyplugin.Party;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -27,7 +27,7 @@ public class PartyCommand extends Command {
     {
         if (!(sender instanceof ProxiedPlayer))
         {
-            sender.sendMessage(new TextComponent(Main.partyprefix + "§cDu musst ein Spieler sein, um §cdiesen §cBefehl §causzuführen!"));
+            sender.sendMessage(new TextComponent(Party.partyprefix + "§cThis is not a Console Command!"));
             return;
         }
         ProxiedPlayer p = (ProxiedPlayer)sender;
@@ -35,17 +35,17 @@ public class PartyCommand extends Command {
         {
             for (SubCommand sc : this.cmds)
             {
-                TextComponent t = new TextComponent(Main.partyprefix + "§e/party " + aliases(sc) + " " + sc.getUsage() + " §7" + sc.getMessage());
+                TextComponent t = new TextComponent(Party.partyprefix + "§e/party " + aliases(sc) + " " + sc.getUsage() + " §7" + sc.getMessage());
                 t.setClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/party " + aliases(sc) + " "));
                 p.sendMessage(t);
             }
-            p.sendMessage(new TextComponent(Main.partyprefix + "§e/pc <Nachricht>"));
+            p.sendMessage(new TextComponent(Party.partyprefix + "§e/p <Message>"));
             return;
         }
         SubCommand sc = getCommand(args[0]);
         if (sc == null)
         {
-            p.sendMessage(new TextComponent(Main.partyprefix + "§cDieser Befehl §cexistiert §cnicht."));
+            p.sendMessage(new TextComponent(Party.partyprefix + "§cThis is not a valid §ccommand!"));
             return;
         }
         Object a = new Vector<>(Arrays.asList(args));

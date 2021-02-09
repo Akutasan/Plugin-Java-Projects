@@ -32,7 +32,7 @@ public class Main extends Plugin {
         getProxy().getPluginManager().registerCommand(this, new SocialSpy());
         getProxy().getPluginManager().registerCommand(this, new AdminChatComm(this));
         getProxy().getPluginManager().registerCommand(this, new ModChatComm(this));
-        getProxy().getPluginManager().registerCommand(this, new JoinmeComm());
+//        getProxy().getPluginManager().registerCommand(this, new JoinmeComm());
     }
 
     public void sendTeam(String prefix, String message){

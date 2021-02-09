@@ -1,7 +1,7 @@
 package com.akutasan.partyplugin.commands;
 
 
-import com.akutasan.partyplugin.Main;
+import com.akutasan.partyplugin.Party;
 import com.akutasan.partyplugin.manager.PartyManager;
 import com.akutasan.partyplugin.manager.PlayerParty;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -18,20 +18,20 @@ public class PartyList extends SubCommand {
     {
         if (PartyManager.getParty(p) == null)
         {
-            p.sendMessage(new TextComponent(Main.partyprefix + "§cDu bist in §ckeiner §cParty!"));
+            p.sendMessage(new TextComponent(Party.partyprefix + "§cYou are not §cin any §cParty!"));
             return;
         }
         PlayerParty party = PartyManager.getParty(p);
         assert party != null;
         int psize = party.getPlayers().size() + 1;
         p.sendMessage(new TextComponent("§8§m---------§7[§5"+party.getLeader().getName()+"'s Party §6(" + psize + ")§7]§8§m---------"));
-        p.sendMessage(new TextComponent("§dParty Leiter: §6" + PlayerParty.getRankCol(party.getLeader()) + party.getLeader().getName()));
+        p.sendMessage(new TextComponent("§dParty Leader: §6" + PlayerParty.getRankCol(party.getLeader()) + party.getLeader().getName()));
         if (!party.getPlayers().isEmpty()) {
-            p.sendMessage(new TextComponent("§dParty Mitglieder: §e" + getPl(p)));
+            p.sendMessage(new TextComponent("§dParty Members: §e" + getPl(p)));
         } else {
-            p.sendMessage(new TextComponent("§dParty Mitglieder: §8Keine"));
+            p.sendMessage(new TextComponent("§dParty Members: §8Keine"));
         }
-        p.sendMessage(new TextComponent("§dOnline auf §a" + party.getLeader().getServer().getInfo().getName()));
+        p.sendMessage(new TextComponent("§dOnline on §a" + party.getLeader().getServer().getInfo().getName()));
         p.sendMessage(new TextComponent("§8§m-----§8§m-----§8§m-----§8§m----§8§m-----§8§m----§8§m----"));
     }
 

@@ -12,7 +12,7 @@ import org.bukkit.scoreboard.Scoreboard;
 
 import java.util.Objects;
 
-public class Main extends JavaPlugin {
+public class GoldPickup extends JavaPlugin {
     @Override
     public void onEnable() {
         PluginManager pluginManager = this.getServer().getPluginManager();

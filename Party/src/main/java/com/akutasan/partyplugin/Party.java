@@ -6,23 +6,22 @@ import com.akutasan.partyplugin.commands.PartyChat;
 import com.akutasan.partyplugin.commands.PartyCommand;
 import net.md_5.bungee.BungeeCord;
 import net.md_5.bungee.api.ChatColor;
-import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.plugin.Plugin;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main extends Plugin {
+public class Party extends Plugin {
 
     public static String lang = "";
-    private static Main instance;
-    public static String partyprefix = "§9§lSynodix §8§l× ";
+    private static Party instance;
+    public static String partyprefix = "§e§l(!) §f";
     public static List<String> disabledServer = new ArrayList<>();
 
     public void onEnable()
     {
         instance = this;
-        getLogger().info(ChatColor.GREEN +"ist erfolgreich geladen!");
+        getLogger().info(ChatColor.GREEN +" succesfully activated!");
         BungeeCord.getInstance().getPluginManager().registerCommand(this, new PartyCommand());
         BungeeCord.getInstance().getPluginManager().registerListener(this, new ServerSwitch());
         BungeeCord.getInstance().getPluginManager().registerListener(this, new ServerDisconnect());
@@ -30,7 +29,7 @@ public class Main extends Plugin {
     }
 
     public void onDisable(){
-        getLogger().info(ChatColor.RED+"ist erfolgreich heruntergefahren!");
+        getLogger().info(ChatColor.RED+" succesfully deactivated!");
     }
 
     public static Plugin getInstance()

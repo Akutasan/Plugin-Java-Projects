@@ -1,4 +1,4 @@
 name: PartyPlugin
 author: Akutasan
-main: com.akutasan.partyplugin.Main
+main: com.akutasan.partyplugin.Party
 version: 1.8

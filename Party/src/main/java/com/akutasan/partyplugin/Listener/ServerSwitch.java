@@ -3,10 +3,10 @@ package com.akutasan.partyplugin.Listener;
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.io.IOException;
-import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
-import com.akutasan.partyplugin.Main;
+import com.akutasan.partyplugin.Party;
 import com.akutasan.partyplugin.manager.PartyManager;
 import com.akutasan.partyplugin.manager.PlayerParty;
 import net.md_5.bungee.BungeeCord;
@@ -32,11 +32,11 @@ public class ServerSwitch
             if ((party.getLeader().getServer().getInfo().getName().contains("Lobby")) || (party.getLeader().getServer().getInfo().getName().contains("Lobby01")) || (party.getLeader().getServer().getInfo().getName().contains("Lobby-01"))) {
                 return;
             }
-            party.getLeader().sendMessage(new TextComponent(Main.partyprefix + "§eDie Party betritt den Server §6" + party.getLeader().getServer().getInfo().getName()));
+            party.getLeader().sendMessage(new TextComponent(Party.partyprefix + "§eThe Party is joining the server §6" + party.getLeader().getServer().getInfo().getName()));
             for (final ProxiedPlayer pp : party.getPlayers())
             {
-                pp.sendMessage(new TextComponent(Main.partyprefix + "§eDie Party betritt den Server §6" + party.getLeader().getServer().getInfo().getName()));
-                BungeeCord.getInstance().getScheduler().schedule(Main.getInstance(), new Runnable()
+                pp.sendMessage(new TextComponent(Party.partyprefix + "§eThe Party is joining the server §6" + party.getLeader().getServer().getInfo().getName()));
+                BungeeCord.getInstance().getScheduler().schedule(Party.getInstance(), new Runnable()
                 {
                     public void run()
                     {
@@ -63,33 +63,34 @@ public class ServerSwitch
                     if (input.equalsIgnoreCase("invite")){
                         ProxiedPlayer pl = BungeeCord.getInstance().getPlayer(target);
                         PlayerParty party;
-                        if ((PartyManager.getParty(player) != null) && (!PartyManager.getParty(player).isLeader(player))) {
-                            player.sendMessage(new TextComponent(Main.partyprefix + "§cDu bist nicht der Party §cBesitzer."));
+                        if ((PartyManager.getParty(player) != null) && (!Objects.requireNonNull(PartyManager.getParty(player)).isLeader(player))) {
+                            player.sendMessage(new TextComponent(Party.partyprefix + "§cYou are not the party §cleader."));
                         }
                         if ((PartyManager.getParty(player) != null) && ((party = PartyManager.getParty(player)).hasRequest(pl)))
                         {
-                            player.sendMessage(new TextComponent(Main.partyprefix + "§cDer §cSpieler §chat bereits eine §cEinladung §czu §cdeiner §cParty."));
+                            player.sendMessage(new TextComponent(Party.partyprefix + "§cThe §cplayer §chat already received an §cinvitation §cto §cyour §cparty."));
                             return;
                         }
                         if (PartyManager.getParty(pl) != null)
                         {
-                            player.sendMessage(new TextComponent(Main.partyprefix + "§cDer Spieler ist bereits in §ceiner §canderen §cParty."));
+                            player.sendMessage(new TextComponent(Party.partyprefix + "§cThe player is already in §cean §cother §cParty."));
                             return;
                         }
                         if (PartyManager.getParty(player) != null)
                         {
                             party = PartyManager.getParty(player);
+                            assert party != null;
                             if (party.isInParty(pl)) {
-                                player.sendMessage(new TextComponent(Main.partyprefix + "§cDer Spieler ist bereits §cin §cdeiner §cParty."));
+                                player.sendMessage(new TextComponent(Party.partyprefix + "§cThe player is already §cin §cyour §cparty."));
                                 return;
                             }
-                            player.sendMessage(new TextComponent(Main.partyprefix + "§aDu hast §6" + target + " §ain deine §aParty §aeingeladen."));
+                            player.sendMessage(new TextComponent(Party.partyprefix + "§aYou have invited §6" + target + " §ainto your §aParty §ae."));
                             party.invite(pl);
                         }
                         else
                         {
                             PartyManager.createParty(player);
-                            player.sendMessage(new TextComponent(Main.partyprefix + "§aDu hast §6" + target + " §ain deine Party §aeingeladen."));
+                            player.sendMessage(new TextComponent(Party.partyprefix + "§aYou invited §6" + target + " §ainto your party §aeinvited."));
                             party = PartyManager.getParty(player);
                             assert party != null;
                             party.invite(pl);

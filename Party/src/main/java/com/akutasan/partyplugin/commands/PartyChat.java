@@ -1,6 +1,6 @@
 package com.akutasan.partyplugin.commands;
 
-import com.akutasan.partyplugin.Main;
+import com.akutasan.partyplugin.Party;
 import com.akutasan.partyplugin.manager.PartyManager;
 import com.akutasan.partyplugin.manager.PlayerParty;
 import net.md_5.bungee.api.CommandSender;
@@ -18,13 +18,13 @@ public class PartyChat extends Command {
     {
         if (args.length == 0)
         {
-            sender.sendMessage(new TextComponent(Main.partyprefix + "§c/p <Nachricht>"));
+            sender.sendMessage(new TextComponent(Party.partyprefix + "§c/p <Message>"));
             return;
         }
         ProxiedPlayer p = (ProxiedPlayer)sender;
         if (PartyManager.getParty(p) == null)
         {
-            p.sendMessage(new TextComponent(Main.partyprefix + "§cDu bist in §ckeiner §cParty."));
+            p.sendMessage(new TextComponent(Party.partyprefix + "§cYou aren't in any §cParty."));
             return;
         }
         PlayerParty party = PartyManager.getParty(p);

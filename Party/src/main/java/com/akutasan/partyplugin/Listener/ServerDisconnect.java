@@ -1,7 +1,7 @@
 package com.akutasan.partyplugin.Listener;
 
 import java.util.concurrent.TimeUnit;
-import com.akutasan.partyplugin.Main;
+import com.akutasan.partyplugin.Party;
 import com.akutasan.partyplugin.manager.PartyManager;
 import com.akutasan.partyplugin.manager.PlayerParty;
 import net.md_5.bungee.BungeeCord;
@@ -21,13 +21,13 @@ public class ServerDisconnect implements Listener {
             if (party.isLeader(p)) {
                 if (party.getPlayers().size() == 1) {
                     for (ProxiedPlayer pp : party.getPlayers()) {
-                        pp.sendMessage(new TextComponent(Main.partyprefix + "§cDa der Partybesitzer §cdie §cParty §cverlassen hat, §cwurde §cdie §cParty §caufgelöst."));
+                        pp.sendMessage(new TextComponent(Party.partyprefix + "§cSince the Party leader §cleft §cthe §cParty, §cthe §cParty §cwas dissolved."));
                     }
                     party.removePlayer(p);
                     PartyManager.deleteParty(p);
                 } else {
                     for (ProxiedPlayer pp : party.getPlayers()) {
-                        pp.sendMessage(new TextComponent(Main.partyprefix + "§cDa der Partybesitzer §cdie §cParty §cverlassen hat, §cwurde §cdie §cParty §caufgelöst."));
+                        pp.sendMessage(new TextComponent(Party.partyprefix + "§cSince the Party leader §cleft §cthe §cParty, §cthe §cparty §cwas dissolved."));
                         party.removePlayer(p);
                         party.removePlayer(pp);
                     }
@@ -35,7 +35,7 @@ public class ServerDisconnect implements Listener {
             } else {
                 party.removePlayer(p);
                 for (ProxiedPlayer pp : party.getPlayers()) {
-                    pp.sendMessage(new TextComponent(Main.partyprefix + "§6" + p.getName() + " §chat §cdie §cParty §cverlassen."));
+                    pp.sendMessage(new TextComponent(Party.partyprefix + "§6" + p.getName() + " §chas §cleft the §cParty §c."));
                 }
                 start(p);
             }
@@ -44,12 +44,12 @@ public class ServerDisconnect implements Listener {
 
     private void start(final ProxiedPlayer p)
     {
-        BungeeCord.getInstance().getScheduler().schedule(Main.getInstance(), () -> {
+        BungeeCord.getInstance().getScheduler().schedule(Party.getInstance(), () -> {
             PlayerParty party = PartyManager.getParty(p);
             if ((party != null) && (party.getPlayers().size() == 0)) {
                 party.removePlayer(p);
-                party.getLeader().sendMessage(new TextComponent(Main.partyprefix + "§cDie Party §cwird §cwegen §czu §cwenig §cMitgliedern §caufgelöst."));
-                p.sendMessage(new TextComponent(Main.partyprefix + "§cDie §cParty §cwurde §caufgelöst."));
+                party.getLeader().sendMessage(new TextComponent(Party.partyprefix + "§cThe party is §cdissolved because §cof too few members."));
+                p.sendMessage(new TextComponent(Party.partyprefix + "§cThe §cParty §cwas §cdissolved."));
             }
         }, 2L, TimeUnit.MINUTES);
     }
