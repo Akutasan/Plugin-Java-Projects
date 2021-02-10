@@ -11,7 +11,7 @@ import net.md_5.bungee.api.plugin.Command;
 public class PartyChat extends Command {
     public PartyChat()
     {
-        super("pc");
+        super("p");
     }
 
     public void execute(CommandSender sender, String[] args)
@@ -38,8 +38,8 @@ public class PartyChat extends Command {
         }
         assert party != null;
         for (ProxiedPlayer members : party.getPlayers()) {
-            members.sendMessage(new TextComponent("§d§lParty §8• §6" + PlayerParty.getRankCol(p) + p + " §8» §7" + msg));
+            members.sendMessage(new TextComponent("§d§lPartyChat §8• §6" + PlayerParty.getRankCol(p) + p + " §8» §7" + msg));
         }
-        party.getLeader().sendMessage(new TextComponent("§d§lParty §8• §6" + PlayerParty.getRankCol(p) + p + " §8» §7" + msg));
+        party.getLeader().sendMessage(new TextComponent("§d§lPartyChat §8• §6" + PlayerParty.getRankCol(p) + p + " §8» §7" + msg));
     }
 }

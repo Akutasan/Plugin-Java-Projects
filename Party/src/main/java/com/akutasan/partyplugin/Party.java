@@ -15,7 +15,9 @@ public class Party extends Plugin {
 
     public static String lang = "";
     private static Party instance;
-    public static String partyprefix = "§e§l(!) §f";
+    public static String partyprefix = "§d§lParty §r§8● ";
+    //§b[§5Party§b]
+    //§3§lGhibli§b§lCraft §8⇨
     public static List<String> disabledServer = new ArrayList<>();
 
     public void onEnable()

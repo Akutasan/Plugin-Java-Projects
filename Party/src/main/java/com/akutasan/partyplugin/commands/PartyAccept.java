@@ -18,7 +18,7 @@ public class PartyAccept extends SubCommand
     {
         if (args.length == 0)
         {
-            p.sendMessage(new TextComponent(Party.partyprefix + "§cPlease enter a valid §cNamen."));
+            p.sendMessage(new TextComponent(Party.partyprefix + "§cPlease enter a valid §cName."));
             return;
         }
         if (PartyManager.getParty(p) != null)

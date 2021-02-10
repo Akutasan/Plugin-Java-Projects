@@ -39,7 +39,9 @@ public class PartyCommand extends Command {
                 t.setClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/party " + aliases(sc) + " "));
                 p.sendMessage(t);
             }
-            p.sendMessage(new TextComponent(Party.partyprefix + "§e/p <Message>"));
+            TextComponent t = new TextComponent(Party.partyprefix + "§e/p <Message>");
+            t.setClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/p "));
+            p.sendMessage(t);
             return;
         }
         SubCommand sc = getCommand(args[0]);

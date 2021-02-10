@@ -29,7 +29,7 @@ public class PartyList extends SubCommand {
         if (!party.getPlayers().isEmpty()) {
             p.sendMessage(new TextComponent("§dParty Members: §e" + getPl(p)));
         } else {
-            p.sendMessage(new TextComponent("§dParty Members: §8Keine"));
+            p.sendMessage(new TextComponent("§dParty Members: §8None"));
         }
         p.sendMessage(new TextComponent("§dOnline on §a" + party.getLeader().getServer().getInfo().getName()));
         p.sendMessage(new TextComponent("§8§m-----§8§m-----§8§m-----§8§m----§8§m-----§8§m----§8§m----"));
