@@ -31,7 +31,7 @@ public class PartyCommand extends Command {
             return;
         }
         ProxiedPlayer p = (ProxiedPlayer)sender;
-        if (args.length == 0 || Arrays.toString(args).equalsIgnoreCase("help"))
+        if (args.length == 0 || args[0].equalsIgnoreCase("help"))
         {
             for (SubCommand sc : this.cmds)
             {

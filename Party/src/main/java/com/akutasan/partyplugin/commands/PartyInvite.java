@@ -16,10 +16,8 @@ public class PartyInvite extends SubCommand {
         super("", "<Player>", "invite");
     }
 
-    public void onCommand(ProxiedPlayer p, String[] args)
-    {
-        if (args.length == 0)
-        {
+    public void onCommand(ProxiedPlayer p, String[] args) {
+        if (args.length == 0) {
             p.sendMessage(new TextComponent(Party.partyprefix + "§cPlease enter a valid §cName!"));
             return;
         }
@@ -29,25 +27,24 @@ public class PartyInvite extends SubCommand {
             p.sendMessage(new TextComponent(Party.partyprefix + "§e" + args[0] + " §cis not online!"));
             return;
         }
-        if (pl.getName().equals(p.getName()))
+        else if (pl.getName().equals(p.getName()))
         {
             p.sendMessage(new TextComponent(Party.partyprefix + "§cYou cannot invite yourself!"));
             return;
         }
+
         PlayerParty party;
         if ((PartyManager.getParty(p) != null) && (!Objects.requireNonNull(PartyManager.getParty(p)).isLeader(p))) {
             p.sendMessage(new TextComponent(Party.partyprefix + "§cYou are not the §cParty leader!"));
-        }
-        if ((PartyManager.getParty(p) != null) && (Objects.requireNonNull(PartyManager.getParty(p)).hasRequest(pl)))
-        {
+            return;
+        } else if ((PartyManager.getParty(p) != null) && (Objects.requireNonNull(PartyManager.getParty(p)).hasRequest(pl))){
             p.sendMessage(new TextComponent(Party.partyprefix + "§cThe player has already been invited to your Party!"));
             return;
-        }
-        if (PartyManager.getParty(pl) != null)
-        {
+        } else if (PartyManager.getParty(pl) != null) {
             p.sendMessage(new TextComponent(Party.partyprefix + "§cThe player is §calready in another Party!"));
             return;
         }
+
         if (PartyManager.getParty(p) != null)
         {
             party = PartyManager.getParty(p);
@@ -58,9 +55,7 @@ public class PartyInvite extends SubCommand {
             }
             p.sendMessage(new TextComponent(Party.partyprefix + "§aYou have invited §6" + PlayerParty.getRankCol(pl) + pl + " §ainto your Party!"));
             party.invite(pl);
-        }
-        else
-        {
+        } else {
             PartyManager.createParty(p);
             p.sendMessage(new TextComponent(Party.partyprefix + "§aYou have invited §6" + PlayerParty.getRankCol(pl) + pl + " §ainto your Party!"));
             party = PartyManager.getParty(p);

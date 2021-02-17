@@ -18,7 +18,7 @@ public class PartyAccept extends SubCommand
     {
         if (args.length == 0)
         {
-            p.sendMessage(new TextComponent(Party.partyprefix + "§cPlease enter a valid §cName."));
+            p.sendMessage(new TextComponent(Party.partyprefix + "§cPlease enter a valid §cName!"));
             return;
         }
         if (PartyManager.getParty(p) != null)
@@ -40,7 +40,7 @@ public class PartyAccept extends SubCommand
         PlayerParty party = PartyManager.getParty(pl);
         assert party != null;
         if (!party.hasRequest(p)) {
-            p.sendMessage(new TextComponent(Party.partyprefix + "§cYou don't have an §cactive invite from §6" + args[0] + " §c."));
+            p.sendMessage(new TextComponent(Party.partyprefix + "§cYou don't have an §cactive invite from §6" + args[0] + " §c!"));
         }
         if (party.isInParty(p))
         {
@@ -50,7 +50,7 @@ public class PartyAccept extends SubCommand
         if (party.addPlayer(p))
         {
             for (ProxiedPlayer pp : party.getPlayers()) {
-                pp.sendMessage(new TextComponent(Party.partyprefix + "§6" + PlayerParty.getRankCol(p) + p + " §ejoined the Party §e!"));
+                pp.sendMessage(new TextComponent(Party.partyprefix + "§6" + PlayerParty.getRankCol(p) + p + " §ejoined the Party§e!"));
             }
             party.getLeader().sendMessage(new TextComponent(Party.partyprefix + "§6" + PlayerParty.getRankCol(p) + p + " §ejoined the Party!"));
             party.removeInvite(p);

@@ -126,7 +126,7 @@ public class PlayerParty
                 {
                     PartyManager.deleteParty(p);
                     party.getLeader().sendMessage(new TextComponent(Party.partyprefix + "§cThe Party §cis dissolved because of too §cfew §cmembers!"));
-                    p.sendMessage(new TextComponent(Party.partyprefix + "§cThe Party §cwas §cdissolved"));
+                    p.sendMessage(new TextComponent(Party.partyprefix + "§cThe Party §cwas §cdissolved!"));
                 }
             }
         }, 2L, TimeUnit.MINUTES);

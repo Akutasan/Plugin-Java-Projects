@@ -18,7 +18,7 @@ public class PartyDeny extends SubCommand
     {
         if (args.length == 0)
         {
-            p.sendMessage(new TextComponent(Party.partyprefix + "§cPlease enter a valid name!"));
+            p.sendMessage(new TextComponent(Party.partyprefix + "§cPlease enter a valid Name!"));
             return;
         }
         if (PartyManager.getParty(p) != null)
@@ -45,7 +45,7 @@ public class PartyDeny extends SubCommand
             return;
         }
         party.removeInvite(p);
-        p.sendMessage(new TextComponent(Party.partyprefix + "§cYou declined the invite of §e" + PlayerParty.getRankCol(party.getLeader()) + party.getLeader() + " §c."));
+        p.sendMessage(new TextComponent(Party.partyprefix + "§cYou declined the invite of §e" + PlayerParty.getRankCol(party.getLeader()) + party.getLeader() + " §c!"));
         pl.sendMessage(new TextComponent(Party.partyprefix + "§e" + PlayerParty.getRankCol(p) + p.getName() + " §cdeclined your invite!"));
         if (party.getPlayers().size() == 1) {
             party.removePlayer(pl);

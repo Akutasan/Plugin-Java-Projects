@@ -18,7 +18,7 @@ public class PartyList extends SubCommand {
     {
         if (PartyManager.getParty(p) == null)
         {
-            p.sendMessage(new TextComponent(Party.partyprefix + "§cYou are not §cin any §cParty!"));
+            p.sendMessage(new TextComponent(Party.partyprefix + "§cYou are not §cin a §cParty!"));
             return;
         }
         PlayerParty party = PartyManager.getParty(p);

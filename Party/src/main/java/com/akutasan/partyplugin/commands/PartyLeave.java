@@ -21,25 +21,25 @@ public class PartyLeave extends SubCommand {
             if (party.isLeader(p)) {
                 if (party.getPlayers().size() == 1) {
                     for (ProxiedPlayer pp : party.getPlayers()) {
-                        pp.sendMessage(new TextComponent(Party.partyprefix + "§cSince the party owner §cleft §cthe §cParty, §cthe §cparty §cwas dissolved."));
+                        pp.sendMessage(new TextComponent(Party.partyprefix + "§cSince the party owner §cleft §cthe §cParty, §cthe §cparty §cwas dissolved!"));
                     }
                     party.removePlayer(p);
                     PartyManager.deleteParty(p);
                 } else {
                     for (ProxiedPlayer pp : party.getPlayers()) {
-                        pp.sendMessage(new TextComponent(Party.partyprefix + "§cSince the party owner §cleft §cthe §cParty, §cthe §cparty §cwas dissolved."));
+                        pp.sendMessage(new TextComponent(Party.partyprefix + "§cSince the party owner §cleft §cthe §cParty, §cthe §cparty §cwas dissolved!"));
                         party.removePlayer(p);
                         party.removePlayer(pp);
                     }
                 }
-                p.sendMessage(new TextComponent(Party.partyprefix + "§cYou left the party §cand §cthe §cParty §cwas §cdissolved."));
+                p.sendMessage(new TextComponent(Party.partyprefix + "§cYou left the party §cand §cthe §cParty §cwas §cdissolved!"));
             } else {
                 party.removePlayer(p);
                 p.sendMessage(new TextComponent(Party.partyprefix + "§cYou left the party!"));
                 for (ProxiedPlayer pp : party.getPlayers()) {
-                    pp.sendMessage(new TextComponent(Party.partyprefix + "§e" + PlayerParty.getRankCol(p) + p.getName() + " §chas §cleft the §cParty §c."));
+                    pp.sendMessage(new TextComponent(Party.partyprefix + "§e" + PlayerParty.getRankCol(p) + p.getName() + " §chas §cleft the §cParty §c!"));
                 }
-                party.getLeader().sendMessage(new TextComponent(Party.partyprefix + "§e" + PlayerParty.getRankCol(p) + p.getName() + " §chas §cleft the §cParty §c."));
+                party.getLeader().sendMessage(new TextComponent(Party.partyprefix + "§e" + PlayerParty.getRankCol(p) + p.getName() + " §chas §cleft the §cParty §c!"));
             }
         }
     }

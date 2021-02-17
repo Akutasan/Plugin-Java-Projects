@@ -32,7 +32,7 @@ public class PartyKick extends SubCommand
         assert party != null;
         if (!party.isLeader(p))
         {
-            p.sendMessage(new TextComponent(Party.partyprefix + "§cYou are not the §cParty §cleader."));
+            p.sendMessage(new TextComponent(Party.partyprefix + "§cYou are not the §cParty §cleader!"));
             return;
         }
         ProxiedPlayer pl = BungeeCord.getInstance().getPlayer(args[0]);
@@ -48,7 +48,7 @@ public class PartyKick extends SubCommand
         }
         if (party.removePlayer(pl)) {
             pl.sendMessage(new TextComponent(Party.partyprefix + "§cYou have been kicked §cfrom the Party!"));
-            p.sendMessage(new TextComponent(Party.partyprefix + "§6" + PlayerParty.getRankCol(p) + p.getName() + " §cleft the Party."));
+            p.sendMessage(new TextComponent(Party.partyprefix + "§6" + PlayerParty.getRankCol(p) + p.getName() + " §cleft the Party!"));
             for (ProxiedPlayer pp : party.getPlayers()) {
                 pp.sendMessage(new TextComponent(Party.partyprefix + "§6" + PlayerParty.getRankCol(pl) + pl.getName() + " §chas been kicked from your Party!"));
             }
@@ -63,7 +63,7 @@ public class PartyKick extends SubCommand
             if ((party != null) && (party.getPlayers().size() == 0))
             {
                 PartyManager.deleteParty(p);
-                p.sendMessage(new TextComponent(Party.partyprefix + "§cThe party is dissolved because §cof too few members."));
+                p.sendMessage(new TextComponent(Party.partyprefix + "§cThe party is dissolved because §cof too few members!"));
             }
         }, 2L, TimeUnit.MINUTES);
     }

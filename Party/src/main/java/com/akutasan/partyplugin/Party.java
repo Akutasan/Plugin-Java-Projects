@@ -15,7 +15,8 @@ public class Party extends Plugin {
 
     public static String lang = "";
     private static Party instance;
-    public static String partyprefix = "§d§lParty §r§8● ";
+    public static String partyprefix = "§3§lGhibli§b§lCraft §8§l| ";
+    //§d§lParty §r§8●
     //§b[§5Party§b]
     //§3§lGhibli§b§lCraft §8⇨
     public static List<String> disabledServer = new ArrayList<>();
@@ -23,7 +24,7 @@ public class Party extends Plugin {
     public void onEnable()
     {
         instance = this;
-        getLogger().info(ChatColor.GREEN +" succesfully activated!");
+        getLogger().info(ChatColor.GREEN +" successfully activated!");
         BungeeCord.getInstance().getPluginManager().registerCommand(this, new PartyCommand());
         BungeeCord.getInstance().getPluginManager().registerListener(this, new ServerSwitch());
         BungeeCord.getInstance().getPluginManager().registerListener(this, new ServerDisconnect());
@@ -31,7 +32,7 @@ public class Party extends Plugin {
     }
 
     public void onDisable(){
-        getLogger().info(ChatColor.RED+" succesfully deactivated!");
+        getLogger().info(ChatColor.RED+" successfully deactivated!");
     }
 
     public static Plugin getInstance()

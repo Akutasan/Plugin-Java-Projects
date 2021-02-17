@@ -24,7 +24,7 @@ public class PartyChat extends Command {
         ProxiedPlayer p = (ProxiedPlayer)sender;
         if (PartyManager.getParty(p) == null)
         {
-            p.sendMessage(new TextComponent(Party.partyprefix + "§cYou aren't in any §cParty."));
+            p.sendMessage(new TextComponent(Party.partyprefix + "§cYou aren't in a §cParty!"));
             return;
         }
         PlayerParty party = PartyManager.getParty(p);
@@ -38,8 +38,8 @@ public class PartyChat extends Command {
         }
         assert party != null;
         for (ProxiedPlayer members : party.getPlayers()) {
-            members.sendMessage(new TextComponent("§d§lPartyChat §8• §6" + PlayerParty.getRankCol(p) + p + " §8» §7" + msg));
+            members.sendMessage(new TextComponent("§d§lParty §6" + PlayerParty.getRankCol(p) + p + " §7» §7" + msg));
         }
-        party.getLeader().sendMessage(new TextComponent("§d§lPartyChat §8• §6" + PlayerParty.getRankCol(p) + p + " §8» §7" + msg));
+        party.getLeader().sendMessage(new TextComponent("§d§lParty §6" + PlayerParty.getRankCol(p) + p + " §7» §7" + msg));
     }
 }
