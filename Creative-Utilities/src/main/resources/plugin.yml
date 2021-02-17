@@ -1,0 +1,8 @@
+name: Creative-Utilities
+main: com.akutasan.creative_utilities.Main
+version: 1.0
+author: Akutasan
+
+commands:
+  nv:
+    description: Give you nightvision on command!
