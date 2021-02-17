@@ -8,9 +8,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Objects;
 
-public class Main extends JavaPlugin {
+public class SkinRoleComp extends JavaPlugin {
     private FileManager fileManager;
-    private static Main instance;
+    private static SkinRoleComp instance;
 
 
 
@@ -32,7 +32,7 @@ public class Main extends JavaPlugin {
         getLogger().info("SkinRoleComp successfully disabled!");
     }
 
-    public static Main getInstance() {
+    public static SkinRoleComp getInstance() {
         return instance;
     }
 
